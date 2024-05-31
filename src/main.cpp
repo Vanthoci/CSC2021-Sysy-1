@@ -41,26 +41,26 @@ int main(int argc, char const *argv[])
         cerr << "no input file\n";
         exit(-1);
     }
-    for(int i = 1; i < argc; i++)
+    for (int i = 1; i < argc; i++)
     {
-        if(strcmp(argv[i], "--ast") == 0)
+        if (strcmp(argv[i], "--ast") == 0)
         {
             gen_arm = false;
             gen_ast = true;
-        }  
-        else if(strcmp(argv[i], "--arm") == 0)
+        }
+        else if (strcmp(argv[i], "--arm") == 0)
             gen_arm = true;
-        else if(strcmp(argv[i], "--IR") == 0)
+        else if (strcmp(argv[i], "--IR") == 0)
         {
             gen_IR = true;
             gen_arm = false;
         }
-        else if(strcmp(argv[i], "-o") == 0 && i + 1 < argc)
+        else if (strcmp(argv[i], "-o") == 0 && i + 1 < argc)
         {
             sprintf(output_file, "%s", argv[i + 1]);
             i++;
-        }   
-        else if(strcmp(argv[i], "-S") == 0)
+        }
+        else if (strcmp(argv[i], "-S") == 0)
             ;
         else if (strcmp(argv[i], "-O2") == 0)
             optimize = true;
@@ -68,9 +68,9 @@ int main(int argc, char const *argv[])
             sprintf(input_file, "%s", argv[i]);
     }
 
-    if(!(yyin = fopen(input_file, "r")))
+    if (!(yyin = fopen(input_file, "r")))
     {
-        cerr<<input_file<<": No such file or directory\nno input file\n";
+        cerr << input_file << ": No such file or directory\nno input file\n";
         exit(-1);
     }
 
@@ -93,7 +93,7 @@ int main(int argc, char const *argv[])
         SSCP sscp(unit);
         SSADestruction ssad(unit);
         isa.pass();
-        if(optimize)
+        if (optimize)
         {
             ssa.pass();
             sscp.pass();
@@ -101,62 +101,6 @@ int main(int argc, char const *argv[])
         }
         // ssad.pass();
         unit->print();
-    }
-    if(gen_arm)
-    {
-        Unit *unit = ast->gen_code();
-        IRSemAnalysis isa(unit);
-        isa.pass();
-        if(optimize)
-        {
-            Mem2Reg ssa(unit);
-            SSADestruction ssad(unit);
-            SSCP sscp(unit);
-            DeadCodeElimination dce(unit);
-            StrengthReduction sr(unit);
-            LoopUnrolling lun(unit);
-            Vectorization vec(unit);
-            AutomaticInlining ami(unit);
-            sr.pass();
-            ssa.pass();
-            sscp.pass();
-            dce.pass();
-            ssad.pass();
-            vec.pass();
-        }
-        gen_machine g_machine(unit);
-        m_unit* u = g_machine.convert_unit(fout);
-        PartialRedundancyElimination pre(u);
-        mdce md(u);
-        copy_propagation cp(u);
-        RegisterAllocation ra(u);
-        strength_reduction sr(u);
-        peephole_optimization po(u);
-        array_optimization ao(u);
-        InstructionScheduling inst_sched(u);
-        if(optimize)
-        {
-            ao.pass();
-            sr.pass();
-            cp.pass();
-            md.pass();
-            po.pass();
-            pre.pass();
-            cp.pass();
-            md.pass();
-        }
-        ra.allocateRegisters();
-        u->back_patch();
-        if(optimize)
-        {
-            ao.pass();
-            sr.pass();
-            po.pass();
-            cp.pass();
-            md.pass();
-            inst_sched.pass();
-        }
-        u->gen_machine_code();
     }
     fout.close();
     return 0;
