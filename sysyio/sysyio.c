@@ -12,6 +12,10 @@ void print_int(int x) {
     printf("%d", x);
 }
 
+void print_char(int x) {
+    printf("%c", x);
+}
+
 // Function to print a newline
 void println() {
     printf("\n");

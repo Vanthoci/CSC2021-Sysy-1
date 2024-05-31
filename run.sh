@@ -1,5 +1,21 @@
 #!/bin/bash
-build/compiler mycode.c --IR > mycode.ll
-llvm-link mycode.ll sysyio/sysyio.ll -o combined.bc
-clang combined.bc -o mycode
+build/compiler mycode.c --IR > .innercode/mycode.ll
+
+if grep -q "^syntax error" .innercode/mycode.ll; then
+    cat .innercode/mycode.ll
+    exit 1
+fi
+
+llvm-link .innercode/mycode.ll sysyio/sysyio.ll -o .innercode/combined.bc
+if [ $? -ne 0 ]; then
+    echo "llvm-link failed"
+    exit 1
+fi
+
+clang .innercode/combined.bc -o mycode
+if [ $? -ne 0 ]; then
+    echo "clang compilation failed"
+    exit 1
+fi
+
 ./mycode

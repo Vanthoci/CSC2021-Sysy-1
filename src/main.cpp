@@ -1,4 +1,4 @@
-#define YYERROR_VERBOSE
+
 #include <iostream>
 #include <fstream>
 #include "ast.h"

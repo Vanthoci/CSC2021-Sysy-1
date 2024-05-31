@@ -237,7 +237,8 @@ void Ast::recursive_gen_code(Node *t)
 }
 
 void Ast::decl_gen_code(Node *t)
-{
+{ 
+    fprintf(stderr, "gg test\n");
     if (isconst(t->sym_ptr->tp))
         return;
     if (t->sym_ptr->scope >= LOCAL)
