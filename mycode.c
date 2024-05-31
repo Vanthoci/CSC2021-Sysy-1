@@ -1,11 +1,6 @@
 int main(){
-    int y = 1;
-    int x = 2;
-    y = y + x;
-    if (y == x) {
-        y = y + 1;
-    } else {
-        y = y - 1;
-    }
+    int c = input_int();
+    print_int(c + 1);
+    println();
     return 0;
 }

@@ -104,5 +104,4 @@ int main(int argc, char const *argv[])
     }
     fout.close();
     return 0;
-    
 }
