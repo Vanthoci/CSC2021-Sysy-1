@@ -1,3 +1,4 @@
+#define YYERROR_VERBOSE
 #include <iostream>
 #include <fstream>
 #include "ast.h"
@@ -6,6 +7,7 @@
 #include "DeadCodeElimination.h"
 #include "SSCP.h"
 #include "SSADestruction.h"
+
 using namespace std;
 
 Ast *ast;

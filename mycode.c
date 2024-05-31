@@ -1,9 +1,10 @@
 int main(){
-    int c = input_int();
-    while (c > 0) {
-        print_int(c);
+    int a[4] = {1, 2, 3, 4};
+    int i = 0;
+    while (i < 4) {
+        print_int(a[i]);
         println();
-        c = c - 1;
+        i = i + 1;
     }
     return 0;
     // hey
