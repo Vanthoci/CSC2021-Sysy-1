@@ -1,14 +1,13 @@
 {
-    "name": "LLVM Development Environment",
-    "dockerFile": "Dockerfile",
-    "extensions": [
-      "llvm-vs-code-extensions.vscode-clangd",
-      "ms-vscode.cpptools"
-    ],
-    "settings": {
-      "clangd.path": "/usr/bin/clangd"
-    },
-    "forwardPorts": [],
-    "postCreateCommand": "apt-get update && apt-get install -y llvm clang"
-  }
-  
+  "name": "LLVM Development Environment",
+  "dockerFile": "Dockerfile",
+  "extensions": [
+    "llvm-vs-code-extensions.vscode-clangd",
+    "ms-vscode.cpptools"
+  ],
+  "settings": {
+    "clangd.path": "/usr/bin/clangd"
+  },
+  "forwardPorts": [],
+  "postCreateCommand": "apt-get update && apt-get install -y llvm clang && apt-get install -y software-properties-common && add-apt-repository ppa:ubuntu-toolchain-r/test && apt-get update && apt-get install -y g++-9 && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-11 50 && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 40 && update-alternatives --set g++ /usr/bin/g++-9"
+}
