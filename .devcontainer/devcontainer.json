@@ -1,0 +1,14 @@
+{
+    "name": "LLVM Development Environment",
+    "dockerFile": "Dockerfile",
+    "extensions": [
+      "llvm-vs-code-extensions.vscode-clangd",
+      "ms-vscode.cpptools"
+    ],
+    "settings": {
+      "clangd.path": "/usr/bin/clangd"
+    },
+    "forwardPorts": [],
+    "postCreateCommand": "apt-get update && apt-get install -y llvm clang"
+  }
+  
