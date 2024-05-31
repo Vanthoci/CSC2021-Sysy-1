@@ -1,7 +1,10 @@
 int main(){
     int c = input_int();
-    print_int(c + 1);
-    println();
+    while (c > 0) {
+        print_int(c);
+        println();
+        c = c - 1;
+    }
     return 0;
     // hey
 }

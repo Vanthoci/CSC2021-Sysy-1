@@ -6,21 +6,6 @@
 #include "DeadCodeElimination.h"
 #include "SSCP.h"
 #include "SSADestruction.h"
-
-// #include "LoopUnrolling.h"
-// #include "AutomaticInlining.h"
-// #include "GenMachine.h"
-// #include "PartialRedundancyElimination.h"
-// #include "RegisterAllocation.h"
-// #include "StrengthReduction.h"
-// #include "MachineStrenthReduction.h"
-// #include "PeepholeOptimization.h"
-// #include "ArrayOptimization.h"
-// #include "mdce.h"
-// #include "CopyPropagation.h"
-// #include "ArrayOptimization.h"
-// #include "Vectorization.h"
-// #include "InstructionScheduling.h"
 using namespace std;
 
 Ast *ast;
@@ -33,7 +18,7 @@ char input_file[256];
 bool gen_IR;
 bool gen_arm = true;
 bool gen_ast;
-bool optimize;clear
+bool optimize;
 
 int main(int argc, char const *argv[])
 {
