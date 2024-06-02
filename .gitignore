@@ -1,2 +1,4 @@
 build/*
-mycode*
+mycode.c
+mycode
+.innercode
