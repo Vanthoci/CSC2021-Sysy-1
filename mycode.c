@@ -5,12 +5,9 @@
 
 int main(){
     int x = 666;
-    int y = 123;
-    int z = 12345;
-    // print_int(isprime(x));
-    // println();
-    print_int(x + y + z);
-    print_char(48);
+    int y = 0;
+
+    print_int(x/y);
     println();
     return 0;
     // hey

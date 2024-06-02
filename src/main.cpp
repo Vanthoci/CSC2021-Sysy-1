@@ -76,17 +76,17 @@ int main(int argc, char const *argv[])
     {
         Unit *unit = ast->gen_code();
         IRSemAnalysis isa(unit);
-        Mem2Reg ssa(unit);
-        DeadCodeElimination dce(unit);
-        SSCP sscp(unit);
-        SSADestruction ssad(unit);
+        // Mem2Reg ssa(unit);
+        // DeadCodeElimination dce(unit);
+        // SSCP sscp(unit);
+        // SSADestruction ssad(unit);
         isa.pass();
-        if (optimize)
-        {
-            ssa.pass();
-            sscp.pass();
-            dce.pass();
-        }
+        // if (optimize)
+        // {
+        //     ssa.pass();
+        //     sscp.pass();
+        //     dce.pass();
+        // }
         // ssad.pass();
         unit->print();
     }
