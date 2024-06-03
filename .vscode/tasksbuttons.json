@@ -1,0 +1,10 @@
+{
+    "buttons": [
+      {
+        "name": "Run Script",
+        "task": "Run Script",
+        "color": "default"
+      }
+    ]
+  }
+  
