@@ -1,8 +1,8 @@
-/* A Bison parser, made by GNU Bison 3.5.1.  */
+/* A Bison parser, made by GNU Bison 3.8.2.  */
 
 /* Bison interface for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2020 Free Software Foundation,
+   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2021 Free Software Foundation,
    Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -16,7 +16,7 @@
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
 
 /* As a special exception, you may create a larger work that contains
    part or all of the Bison parser skeleton and distribute that work
@@ -31,11 +31,12 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-/* Undocumented macros, especially those whose name start with YY_,
-   are private implementation details.  Do not rely on them.  */
+/* DO NOT RELY ON FEATURES THAT ARE NOT DOCUMENTED in the manual,
+   especially those whose name start with YY_ or yy_.  They are
+   private implementation details that can be changed or removed.  */
 
-#ifndef YY_YY_INCLUDE_PARSER_H_INCLUDED
-# define YY_YY_INCLUDE_PARSER_H_INCLUDED
+#ifndef YY_YY_PARSER_HPP_INCLUDED
+# define YY_YY_PARSER_HPP_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -44,48 +45,53 @@
 extern int yydebug;
 #endif
 
-/* Token type.  */
+/* Token kinds.  */
 #ifndef YYTOKENTYPE
 # define YYTOKENTYPE
   enum yytokentype
   {
-    ID = 258,
-    INTEGER = 259,
-    CONSTSTR = 260,
-    IF = 261,
-    ELSE = 262,
-    WHILE = 263,
-    INT = 264,
-    VOID = 265,
-    LPAREN = 266,
-    RPAREN = 267,
-    LBRACE = 268,
-    RBRACE = 269,
-    SEMICOLON = 270,
-    LBRACKET = 271,
-    RBRACKET = 272,
-    COMMA = 273,
-    ADD = 274,
-    ASSIGN = 275,
-    EQUAL = 276,
-    NOT = 277,
-    MINUS = 278,
-    MUL = 279,
-    DIV = 280,
-    MOD = 281,
-    OR = 282,
-    AND = 283,
-    NOTEQUAL = 284,
-    LESS = 285,
-    GREATER = 286,
-    LESSEQUAL = 287,
-    GREATEREQUAL = 288,
-    CONST = 289,
-    RETURN = 290,
-    CONTINUE = 291,
-    BREAK = 292,
-    THEN = 293
+    YYEMPTY = -2,
+    YYEOF = 0,                     /* "end of file"  */
+    YYerror = 256,                 /* error  */
+    YYUNDEF = 257,                 /* "invalid token"  */
+    ID = 258,                      /* ID  */
+    INTEGER = 259,                 /* INTEGER  */
+    CONSTSTR = 260,                /* CONSTSTR  */
+    IF = 261,                      /* IF  */
+    ELSE = 262,                    /* ELSE  */
+    WHILE = 263,                   /* WHILE  */
+    INT = 264,                     /* INT  */
+    VOID = 265,                    /* VOID  */
+    LPAREN = 266,                  /* LPAREN  */
+    RPAREN = 267,                  /* RPAREN  */
+    LBRACE = 268,                  /* LBRACE  */
+    RBRACE = 269,                  /* RBRACE  */
+    SEMICOLON = 270,               /* SEMICOLON  */
+    LBRACKET = 271,                /* LBRACKET  */
+    RBRACKET = 272,                /* RBRACKET  */
+    COMMA = 273,                   /* COMMA  */
+    ADD = 274,                     /* ADD  */
+    ASSIGN = 275,                  /* ASSIGN  */
+    EQUAL = 276,                   /* EQUAL  */
+    NOT = 277,                     /* NOT  */
+    MINUS = 278,                   /* MINUS  */
+    MUL = 279,                     /* MUL  */
+    DIV = 280,                     /* DIV  */
+    MOD = 281,                     /* MOD  */
+    OR = 282,                      /* OR  */
+    AND = 283,                     /* AND  */
+    NOTEQUAL = 284,                /* NOTEQUAL  */
+    LESS = 285,                    /* LESS  */
+    GREATER = 286,                 /* GREATER  */
+    LESSEQUAL = 287,               /* LESSEQUAL  */
+    GREATEREQUAL = 288,            /* GREATEREQUAL  */
+    CONST = 289,                   /* CONST  */
+    RETURN = 290,                  /* RETURN  */
+    CONTINUE = 291,                /* CONTINUE  */
+    BREAK = 292,                   /* BREAK  */
+    THEN = 293                     /* THEN  */
   };
+  typedef enum yytokentype yytoken_kind_t;
 #endif
 
 /* Value type.  */
@@ -98,6 +104,8 @@ typedef int YYSTYPE;
 
 extern YYSTYPE yylval;
 
+
 int yyparse (void);
 
-#endif /* !YY_YY_INCLUDE_PARSER_H_INCLUDED  */
+
+#endif /* !YY_YY_PARSER_HPP_INCLUDED  */

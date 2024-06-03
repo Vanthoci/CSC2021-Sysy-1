@@ -1,7 +1,7 @@
 #!/bin/bash
 build/compiler mycode.c --IR > .innercode/mycode.ll
 
-if grep -q "^syntax error" .innercode/mycode.ll; then
+if grep -q "ERROR" .innercode/mycode.ll; then
     cat .innercode/mycode.ll
     exit 1
 fi
